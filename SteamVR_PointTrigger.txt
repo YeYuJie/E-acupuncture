@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SteamVR_PointTrigger : MonoBehaviour {
+
+	SteamVR_LaserPointer slp;
+	SteamVR_TrackedController stc;
+	GameObject target=null;
+
+	// Use this for initialization
+	void Start () {
+		slp = GetComponent<SteamVR_LaserPointer> ();
+		slp.PointerIn += OnpointerIn;
+		//slp.PointerOut += OnpointerOut;
+		stc = GetComponent<SteamVR_TrackedController> ();
+		stc.TriggerClicked += OnTriggerClicked;
+		//stc.TriggerUnclicked += OnTriggerUnclicked;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+	void OnpointerIn(object sender,PointerEventArgs e)
+	{
+		GameObject obj = e.target.gameObject;
+        if(obj!=null)
+            target = obj;
+        /*
+        if (obj.tag.Equals("Cube"))
+			Debug.Log("Cube");
+            */
+	}
+    void OnTriggerClicked(object sender, ClickedEventArgs e)
+    {
+        if (target != null)
+        {
+            Debug.Log(target.tag);
+        }
+    }
+}
