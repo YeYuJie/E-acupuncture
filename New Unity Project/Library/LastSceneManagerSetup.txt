@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/SteamVR/testsence.unity
-  isLoaded: 1
-  isActive: 1
